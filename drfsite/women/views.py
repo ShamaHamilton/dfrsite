@@ -13,6 +13,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser, IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
+from women.paginations import WomenAPIListPagination
 
 from women.serializers import WomenSerializer
 from women.models import Category, Women
@@ -23,6 +24,7 @@ class WomenAPIList(ListCreateAPIView):
     queryset = Women.objects.all()
     serializer_class = WomenSerializer
     permission_classes = (IsAuthenticatedOrReadOnly, )
+    pagination_class = WomenAPIListPagination
 
 
 class WomenAPIUpdate(RetrieveUpdateAPIView):
