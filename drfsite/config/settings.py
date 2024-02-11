@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',
 
     'women.apps.WomenConfig',
 ]
@@ -135,5 +137,10 @@ REST_FRAMEWORK = {
     # ]  # по умолчанию доступ к данным только авторизованным пользователям
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
-    ]  # по умолчанию доступ для всех
+    ],  # по умолчанию доступ для всех
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
 }
